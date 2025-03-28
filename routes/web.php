@@ -4,8 +4,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LogOutController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ModelControllers\EstudanteController;
-use App\Http\Controllers\ModelControllers\TurmaController;
+use App\Http\Controllers\TurmaController;
+use App\Http\Controllers\EstudanteController;
 use App\Http\Middleware\ExpiredTokenCsrf;
 use Illuminate\Support\Facades\Route;
 

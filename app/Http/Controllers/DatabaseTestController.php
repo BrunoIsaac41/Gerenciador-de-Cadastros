@@ -12,13 +12,10 @@ class DbTestController extends Controller
     public function testConnection()
     {
         try {
-            // Test database connection
             DB::connection()->getPdo();
             
-            // Optional: Run a simple query
             $results = DB::select('SELECT 1');
             
-            // Return success response
             return response()->json([
                 'status' => 'success',
                 'message' => 'Database connection successful!',
@@ -28,7 +25,6 @@ class DbTestController extends Controller
                 ]
             ]);
         } catch (Exception $e) {
-            // Return error details
             return response()->json([
                 'status' => 'error',
                 'message' => 'Database connection failed',

@@ -21,7 +21,7 @@ class Estudante extends Model
         return $this->belongsTo(User::class, 'user_id');
         
     }
-
+    
     public function turma()
     {
         return $this->belongsTo(Turma::class, 'turma_id');

@@ -25,7 +25,7 @@
                 <nav>
                     <div class= "table-choose">
                         <h2>Selecione a tabela desejada</h2>
-                        <form action="{{route('showTable')}}" method="post">
+                        <form action="{{route('dashboard.show')}}" method="post">
                             @csrf
                             <select name="table">
                                 <option value="selecionar">Selecione</option>
@@ -42,19 +42,44 @@
                         
                         <thead class= "header">
                             <tr>
-                                    {{dd(session('data'))}}
-                                     @foreach($data as $d)
-                                            dd($d)
+                                @php
+                                    if(isset($data)):
+                                        $entityDataRow = [];
+                                        $tableAttributes[] = $data[0]->getAttributes();
+                                        foreach(array_keys($tableAttributes[0]) as $col)
+                                            echo "<th scope='col'>$col</th>";
+                                        echo "<th scope='col'>Editar</th>";
+                                        echo "<th scope='col'>Excluir</th>";
+                                    endif;
+                                @endphp
                                         
-                                        @endforeach
-                                            <th scope='col'>$key</th>
-                                        
-                                        <th scope='col'>Editar</th>
-                                        <th scope='col'>Excluir</th>
-                                        <h2 class = "Selecione">Selecione uma tabela</h2>
-                                    
                             </tr>
                         </thead>
+                        <tbody>
+                            
+                                @if (isset($data)):
+                                    @foreach($tableAttributes as $entityDataRow)
+                                        <tr>
+                                        @foreach(array_values($entityDataRow) as $item)
+                                            <td>
+                                                {{$item}}
+                                            </td>
+                                        @endforeach
+                                            <td>
+                                                <form action="{{ route('dashboard.edit', ['table' => $table , 'id' => $entityDataRow['user_id']]) }}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class='btn-edit' name='data_update' value = {{$table}} >editar</a>
+                                                </form>    
+                                            </td> 
+                                            <td>
+                                                <button class='btn-delete' name='data_delete' href="{{route('dashboard', ['table' => $table])}}">  </button>
+                                            <td>
+                                    
+                                        </tr>
+                                    @endforeach        
+                                @endif
+                            
+                        </tbody>
                        
 
                     </table>

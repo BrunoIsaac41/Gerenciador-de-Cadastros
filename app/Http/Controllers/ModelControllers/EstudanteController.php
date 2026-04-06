@@ -75,7 +75,7 @@ class EstudanteController extends Controller
      */
     public function edit(string $id)
     {
-        return view ('estudante.edit', ['id' => $id]);
+        return view('estudante.edit', ['id' => $id]);
     }
 
     /**

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Estudante;
 use Illuminate\Http\Request;
 
-class EstudanteController extends Controller
+class ProfessorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +21,7 @@ class EstudanteController extends Controller
      */
     public function create()
     {
-        return view('estudantes.create');
+        return view('professor.create');
     }
 
     /**
@@ -29,16 +29,14 @@ class EstudanteController extends Controller
      */
     public function store(Request $request)
     {
-        $estudanteData = [
+        $professorData = [
             'user_id' => $request->user_id,
             'cpf' => $request->cpf,
-            'matricula_id' => $request->matricula_id,
-            'turma_id' => $request->turma_id
         ];
 
-        $estudante_exists = Estudante::whereIn('cpf', $estudanteData['cpf']);
+        $professor_exists = Professor::whereIn('cpf', $professorData['cpf']);
 
-        if($estudante_exists){
+        if($professor_exists){
             return redirect()->back()->with('status',
             [
                 'type' => 'AlreadyCreated',
@@ -49,15 +47,13 @@ class EstudanteController extends Controller
         $estudanteValidated = $request->validated();
         
         if($estudanteValidated){
-            $estudante = new Estudante();
-            $estudante->user_id = $estudanteData['user_id'];
-            $estudante->cpf = $estudanteData['cpf'];
-            $estudante->matricula_id = $estudanteData['matricula_id'];
-            $estudante->turma_id = $estudanteData['turma_id'];
-            $estudante->save();
+            $professor = new professor();
+            $professor->user_id = $professorData['user_id'];
+            $professor->cpf = $professorData['cpf'];
+            $professor->save();
             return redirect()->route('login')->with('status', 
             ['type'=> 'sucessStore'
-            ,'message' => 'Estudante criado com sucesso!'
+            ,'message' => 'Professor cadastrado com sucesso!'
             ]);
         }
     }
@@ -75,7 +71,7 @@ class EstudanteController extends Controller
      */
     public function edit(string $id)
     {
-        return view('estudante.edit', ['id' => $id]);
+        return view('professor.edit', ['id' => $id]);
     }
 
     /**

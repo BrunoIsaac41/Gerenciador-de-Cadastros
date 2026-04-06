@@ -23,12 +23,12 @@ Route::middleware(['auth', ExpiredTokenCsrf::class])->group(function () {
     Route::post('/dashboard/create', action: [DashboardController::class, 'create']) -> name('dashboard.create');
     Route::post('/dashboard/edit', action: [DashboardController::class, 'edit']) -> name('dashboard.edit');
 
-
     Route::get('/about', function(){return view('about');},'about')-> name('about');
 
     Route::resource('estudantes', EstudanteController::class);
     Route::resource('turmas', TurmaController::class);
-
+    Route::resource('turmas', ProfessorController::class);
+    
     Route::get('/logout', action: [LogOutController::class, 'logout']) -> name('logout');
 });
 

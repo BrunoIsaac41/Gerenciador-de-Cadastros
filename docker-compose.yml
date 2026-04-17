@@ -1,0 +1,7 @@
+services:
+  laravel:
+    build: .
+    ports:
+      - "3606:3606"
+    volumes:
+      - .:/var/www/html

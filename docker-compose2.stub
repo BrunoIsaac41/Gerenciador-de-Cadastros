@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  laravel:
+    build: .
+    ports:
+      - "3606:3606"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE:banco_crud
+      MYSQL_USER:root
+      MYSQL_PASSWORD:12345
+      MYSQL_ROOT_PASSWORD:12345
+    ports:
+      - "3306:3306"

@@ -1,0 +1,7 @@
+runs-on: ubuntu-latest
+steps:
+ - uses:action/checkout@v4
+ - name: Run Discord Webhook
+   uses: AS1-DEVOPS
+   with:
+      Webhook_url: ${{ secrets.DISCORD_WEBHOOK }}

@@ -19,6 +19,6 @@ jobs:
       - name: Enviar alerta para Discord
         uses: Ilshidur/action-discord@master
         with:
-          args: "🚨 Novo evento no repositório!"
+          args: "Novo evento no repositório!"
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}

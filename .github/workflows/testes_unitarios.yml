@@ -1,0 +1,33 @@
+name: testes unitários
+
+on:
+  push:
+    branches:
+      - master
+      - '*.x'
+  pull_request:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  discord-alerts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+      
+      - name: Teste Unitário 1
+        run: ./tests/Unit/ArrayTest.php
+      
+      - name: Teste Unitário 2
+        run: ./tests/Unit/BooleanTest.php
+      
+      - name: Teste Unitário 3
+        run: ./tests/Unit/CompacaoString;.php
+        
+      - name: Teste Unitário 4
+        run: ./tests/Unit/ExceptionTest.php
+
+      - name: Teste Unitário 5
+        run: ./tests/Unit/TesteNumerosIguais.php
+

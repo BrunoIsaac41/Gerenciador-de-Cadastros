@@ -29,5 +29,5 @@ jobs:
         run: ./vendor/bin/phpunit --testdox ./tests/Unit/ExceptionTest.php
 
       - name: Teste Unitário 5
-        run: ./vendor/bin/phpunit --testdox ./tests/Unit/TesteNumerosIguais.php
+        run: D:\bruno\Gerenciador de Cadastros\Gerenciador-de-Cadastros\vendor\bin/phpunit --testdox ./tests/Unit/TesteNumerosIguais.php
 

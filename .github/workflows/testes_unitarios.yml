@@ -10,7 +10,7 @@ on:
     - cron: '0 0 * * *'
 
 jobs:
-  discord-alerts:
+  testes-unitarios:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout código

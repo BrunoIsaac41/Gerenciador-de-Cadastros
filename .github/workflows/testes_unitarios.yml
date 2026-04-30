@@ -1,0 +1,33 @@
+name: testes unitários
+
+on:
+  push:
+    branches:
+      - master
+      - '*.x'
+  pull_request:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  testes-unitarios:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+      
+      - name: Teste Unitário 1
+        run: vendor/bin/phpunit --testdox tests/Unit/ArrayTest.php
+      
+      - name: Teste Unitário 2
+        run: vendor/bin/phpunit--testdox tests/Unit/BooleanTest.php
+      
+      - name: Teste Unitário 3
+        run: vendor/bin/phpunit --testdox tests/Unit/CompacaoString;.php
+        
+      - name: Teste Unitário 4
+        run: vendor/bin/phpunit --testdox tests/Unit/ExceptionTest.php
+
+      - name: Teste Unitário 5
+        run: vendor/bin/phpunit --testdox  tests/Unit/TesteNumerosIguais.php
+

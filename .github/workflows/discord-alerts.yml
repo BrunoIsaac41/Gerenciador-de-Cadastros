@@ -1,0 +1,24 @@
+name: Discord Alerts
+
+on:
+  push:
+    branches:
+      - master
+      - '*.x'
+  pull_request:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  discord-alerts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Enviar alerta para Discord
+        uses: Ilshidur/action-discord@master
+        with:
+          args: "Novo evento no repositório!"
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
